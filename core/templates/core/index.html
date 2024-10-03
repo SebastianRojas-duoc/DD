@@ -1,0 +1,502 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>DD</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static 'img/favicon.png' %}" rel="icon">
+  <link href="{% static 'img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  
+</head>
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top ">
+    <div class="container d-flex align-items-center justify-content-lg-between">
+      
+      <h1 class="logo me-auto me-lg-0"><a href="{% url 'index' %}">DD<span>.</span></a></h1>
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+          <li><a class="nav-link scrollto active" href="#hero">Inicio</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+              Noticias
+            </a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#portfolio">Sección Noticias</a>
+              <a class="dropdown-item" href="{% url 'noti' %}">Ver Mas</a>
+            </div>
+          </li>
+          <li><a class="nav-link scrollto" href="#clima">Clima</a></li>
+          <li><a class="nav-link scrollto" href="#about">Acerca de</a></li>
+          <li><a class="nav-link scrollto" href="#contact">Contactos</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle " href="#" id="navbardrop" data-toggle="dropdown">
+            <i class="bx bx-user-circle"></i>
+            </a>
+            <div class="dropdown-menu">
+              {% if user.is_authenticated %}
+                <p>{{user.username}}</p>
+                <a href="{% url 'usuario' %}">Ver Usuario</a>
+                <a href="{% url 'logout' %}">Cerrar sesion</a>
+              {% else %}
+              <a class="dropdown-item" href="{% url 'regi' %}">Registrate</a>
+              <a href="{% url 'login' %}">Iniciar sesion</a>
+              {% endif %}
+            </div>
+          
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+      
+    </div>
+    
+  </header><!-- End Header -->
+  <!-- ======= inicio Section ======= -->
+  <section id="hero" class="d-flex align-items-center justify-content-center">
+    <div class="container" data-aos="fade-up">
+
+      <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="150">
+        <div class="col-xl-6 col-lg-8">
+          <h1>Informate en DD<span>.</span></h1>
+          <h2>En este blog te puedes informar de las novedades en noticias del pais o del mundo en nuestro diario digital.</h2>
+        </div>
+      </div>
+    </div>
+  </section><!-- End inicio -->
+  
+  <div id="btnn"></div>
+  
+  <main id="main">
+    <br>
+    <!-- ======= noticias Section ======= -->
+      <div class="container" data-aos="zoom-in">
+        <div class="section-title">
+          <br>
+          <br>
+          <br>
+          <h2>Noticias</h2>
+          <p>Revisa las noticias de este año en el blog de noticias</p>
+        </div>
+      </div>
+
+    <section id="portfolio" class="portfolio">
+      <div class="container" data-aos="fade-up">
+        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200" >
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-duoc">
+            <div class="portfolio-wrap">
+              <img src="{% static 'img/portfolio/portfolio-d1.jpg' %}" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>Duoc</h4>
+                <p>Duoc UC sede Plaza Oeste celebró el Mes del libro y la Cultura con actividades abiertas a la comunidad</p>
+                <div class="portfolio-links">
+                  <a href="{% static 'img/portfolio/portfolio-d1.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox"  title= "Reconocidos escritores, divulgadores científicos, cineastas e ilustradores chilenos relataron a través de su experiencia cómo impacta la literatura y la cultura." ><i class="bx bx-plus"></i></a>
+                  <a href="{% url 'detalle_noti3' %}" title="Mas detalles"><i class="bx bx-link"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <div class="portfolio-wrap">
+              <img src="{% static 'img/portfolio/portfolio-1.jpg' %}" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>Pais</h4>
+                <p>Suspenden a fiscal jefe de Los Ángeles por fuga de información a defensas de narcotraficantes.</p>
+                <div class="portfolio-links">
+                  <a href="{% static 'img/portfolio/portfolio-1.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox"  title= "La fiscal jefe María Gemita Rojas y el fiscal adjunto, Rodrigo Durán fueron apartados de sus funciones en el marco de la indagatoria que se lleva adelante en esa unidad del Ministerio Público, debido a la fuga de información hacia abogadas de narcotraficantes." ><i class="bx bx-plus"></i></a>
+                  <a href="{% url 'detalle_noti1' %}" title="Mas detalles"><i class="bx bx-link"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <div class="portfolio-wrap">
+              <img src="{% static 'img/portfolio/portfolio-3.jpg' %}" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>Pais</h4>
+                <p>El encapsulamiento de la política chilena. </p>
+                <div class="portfolio-links">
+                  <a href="{% static 'img/portfolio/portfolio-3.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Mientras no mejoren los índices de confianza interpersonal entre los chilenos, que es la base para que esos mismos chilenos confíen en sus instituciones y la política, seguiremos asistiendo a batallas políticas que de sociales no tienen nada"><i class="bx bx-plus"></i></a>
+                  <a href="" title="Mas detalles"><i class="bx bx-link"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+            <div class="portfolio-wrap">
+              <img src="{% static 'img/portfolio/portfolio-7.jpg' %}" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>Mundo</h4>
+                <p>Desastre en Baltimore: Chile había advertido sobre fallas en carguero que derribó puente en EEUU.</p>
+                <div class="portfolio-links">
+                  <a href="{% static 'img/portfolio/portfolio-7.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="El puerto de San Antonio había detectado fallas eléctricas en la embarcación. Sin embargo, el carguero siguió operando hasta chocar contra el puente, dejando seis personas desaparecidas. La suspensión del tráfico marítimo en el puerto de Baltimore tendrá un alto impacto económico para EEUU."><i class="bx bx-plus"></i></a>
+                  <a href="{% url 'detalle_noti2' %}" title="Mas detalles"><i class="bx bx-link"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+            <div class="portfolio-wrap">
+              <img src="{% static 'img/portfolio/portfolio-8.jpg' %}" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>Mundo</h4>
+                <p>Putin promete castigar a los culpables del atentado en Moscú</p>
+                <div class="portfolio-links">
+                  <a href="{% static 'img/portfolio/portfolio-8.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="El presidente ruso, Vladimir Putin, prometió el sábado castigar a los responsables del atentado que dejó la víspera al menos 133 muertos en Moscú y aseguró que los presuntos autores fueron detenidos cuando huían hacia Ucrania, sin mencionar la reivindicación del grupo Estado Islámico."><i class="bx bx-plus"></i></a>
+                  <a href="" title="Mas detalles"><i class="bx bx-link"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+            <div class="portfolio-wrap">
+              <img src="{% static 'img/portfolio/portfolio-2.jpg' %}" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>Mundo</h4>
+                <p>El hombre con migrañas al que médicos en EE.UU. le encontraron larvas en el cerebro por comer carne de cerdo poco cocida</p>
+                <div class="portfolio-links">
+                  <a href="{% static 'img/portfolio/portfolio-2.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Médicos en Estados Unidos descubrieron que las fuertes y frecuentes migrañas que sufría un paciente eran causadas por la presencia de larvas del parásito de la tenia que presentaba en el cerebro."><i class="bx bx-plus"></i></a>
+                  <a href="" title="Mas detalles"><i class="bx bx-link"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+            <div class="portfolio-wrap">
+              <img src="{% static 'img/portfolio/portfolio-4.jpg' %}" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>Mundo</h4>
+                <p>La prevención en salud bucal es una inversión para mejorar la salud a lo largo de la vida.</p>
+                <div class="portfolio-links">
+                  <a href="{% static 'img/portfolio/portfolio-4.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="En el marco del mes de la Salud Bucal, conocer aspectos como la prevención y la higiene diaria de nuestra boca resulta clave para mejorar la calidad de vida y reducir el riesgo de enfermedades. "><i class="bx bx-plus"></i></a>
+                  <a href="#" title="Mas detalles"><i class="bx bx-link"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="d-grid">
+          <a href="{% url 'noti' %}" class="btn btn-lg btn-outline-main">Ver mas</a>
+        </div>
+      </div>
+    </section><!-- End noticias Section -->
+    <div id="btnn"></div>
+    <!-- ======= info Section ======= -->
+    <section id="info" class="info">
+      <div class="container" data-aos="zoom-in">
+        <h4 class="text-center"><b>Info principales</b></h4>
+        <div class="clients-slider swiper">
+          <div class="swiper-wrapper align-items-center">
+            <div class="swiper-slide"><a href="https://www.latercera.com"><img src="{% static 'img/clients/client-1.png' %}" class="img-fluid" alt=""></a></div>
+            <div class="swiper-slide"><a href="https://www.elmostrador.cl"><img src="{% static 'img/clients/client-2.png' %}" class="img-fluid" alt=""></a></div>
+            <div class="swiper-slide"><a href="https://cnnespanol.cnn.com"><img src="{% static 'img/clients/client-3.png' %}" class="img-fluid" alt=""></a></div>
+            <div class="swiper-slide"><a href="https://www.bbc.com"><img src="{% static 'img/clients/client-4.png' %}" class="img-fluid" alt=""></a></div>
+            <div class="swiper-slide"><a href="https://www.elperiodico.com"><img src="{% static 'img/clients/client-5.png' %}" class="img-fluid" alt=""></a></div>
+            <div class="swiper-slide"><a href="https://elpais.com"><img src="{% static 'img/clients/client-6.png' %}" class="img-fluid" alt=""></a></div>
+            <div class="swiper-slide"><a href="https://www.elmundo.es"><img src="{% static 'img/clients/client-7.png' %}" class="img-fluid" alt=""></a></div>
+            <div class="swiper-slide"><a href="https://www.df.cl"><img src="{% static 'img/clients/client-8.png' %}" class="img-fluid" alt=""></a></div>
+            <div class="swiper-slide"><a href="https://www.duoc.cl/noticias/"><img src="{% static 'img/clients/client-9.png' %}" class="img-fluid" alt=""></a></div>
+            
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+      </div>
+    </section><!-- End info Section -->
+
+    
+    <section id="clima" class="clima">
+      <div class="container" data-aos="zoom-in">
+
+        <div class="section-title">
+          <h2 id="l2">Clima Chile</h2>
+          <p>Vea el clima del centro de chile</p>
+          
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+              <div class="card">
+                  <div class="card-body">
+                      <h3 class="card-title"><b>Hoy:</b></h3>
+                      <h4 class="card-text">Temperatura: {{ clima.temp_C }}°C</h4>
+                      <h4 class="card-text">Humedad: {{ clima.humidity }}%</h4>
+                      <h4 class="card-text">Descripción: {{ clima.lang_es.0.value }}</h4>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-6">
+              <div class="card">
+                  <div class="card-body">
+                      <h3 class="card-title"><b>Mañana:</b></h3>
+                      <h4 class="card-text">Temperatura Máxima: {{ clima_manana.maxtempC }}°C</h4>
+                      <h4 class="card-text">Temperatura Mínima: {{ clima_manana.mintempC }}°C</h4>
+                      <h4 class="card-text">Descripción: {{ clima_manana.hourly.0.lang_es.0.value }}</h4>
+                  </div>
+              </div>
+          </div>
+      </div>
+      </div>
+    </section>
+
+
+    <!-- ======= Acerca Section ======= -->
+    <section id="about" class="about">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row">
+          <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
+            <img src="{% static 'img/about.jpg' %}" class="img-fluid" alt="">
+          </div>
+          <h3 class="h3d">Acerca de DD</h3>
+          <p class="fst-italic">
+            DD o Diario Digital es una pagina Blog que da a conocer las ultimas noticias del duoc, pais o del mundo en los 
+            cuales se toma informacion de otras paginas para unirlas en una sola para facilitar la informacion de otras paguinas en solo este blog, puedes saber sobre:
+          </p>
+          <div class="col-lg-6" data-aos="fade-left" data-aos-delay="100">
+            
+            <div class="icon-box mt-5 mt-lg-0" data-aos="zoom-in" data-aos-delay="150">
+              <i class="bx bx-money"></i>
+              <h4>Mercado</h4>
+              <p>Enterese los precios de los materiales basicos para la comodidad en su vida.</p>
+            </div>
+            <div class="icon-box mt-5" data-aos="zoom-in" data-aos-delay="150">
+              <i class="bx bxs-conversation"></i>
+              <h4>Politica</h4>
+              <p>Vea todos las conversaciones y decisiones en la politica del mundo.</p>
+            </div>
+            <div class="icon-box mt-5" data-aos="zoom-in" data-aos-delay="150">
+              <i class="bx bx-health"></i>
+              <h4>Moda</h4>
+              <p>Enterese de lo que esta de moda como productos para su salud.</p>
+            </div>
+            <div class="icon-box mt-5" data-aos="zoom-in" data-aos-delay="150">
+              <i class="bx bx-shield"></i>
+              <h4>Desastres</h4>
+              <p>Vea los desastres naturales y no naturales, y como cuidarse de ellos.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Section -->
+
+    <!-- ======= Contactos Section ======= -->
+    <section id="conto" class="conto">
+      <div class="container" data-aos="zoom-in">
+
+        <div class="section-title">
+          <h2 id="l2">Contactos</h2>
+          <p id="l2">Contactanos</p>
+        </div>
+
+      </div>
+    </section>
+    
+    <section id="contact" class="contact">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row mt-5">
+
+          <div class="col-lg-4">
+            <div class="info">
+
+              <div class="email">
+                <i class="bi bi-envelope"></i>
+                <h4>Email:</h4>
+                <p>Dd@gmail.com</p>
+              </div>
+
+              <div class="phone">
+                <i class="bi bi-phone"></i>
+                <h4>Telefono:</h4>
+                <p>+56 9 7339 7492
+                </p>
+              </div>
+
+            </div>
+
+          </div>
+          
+
+          <div class="col-lg-8 mt-5 mt-lg-0">
+            <div class="card" id="cc">
+              <form id="form" method="POST" action="comen">
+                {% csrf_token %}
+                <fieldset>
+                    <legend><b><u>Comentario</u></b></legend>
+                    <br>
+                    <br>
+                    <div>
+                      <label for="nombre" id="label2">Nombre: </label>
+                      <input type="text" id="nombre" name="nombre" class="nombre" >
+                    </div>
+                    <div>
+                      <br>
+                      <label for="correo" id="label2">Correo: </label>
+                      <input type="text" id="correo" name="correo" class="correo">
+                    </div>
+                    <div>
+                      <br>
+                      <label for="mes">Mensaje: </label>
+                      <br>
+                      <textarea name="mensajes" id="mensajes" cols="50" rows="5"></textarea>
+                    </div>
+                    <div>
+                      <br>
+                      <input class="reset bter" type="reset" id="btnreset" value="Restablecer">
+                      <input class="submit bter" type="submit" id="btnvalida" value="Enviar">
+                    </div>
+                    <div id="idmess">
+                      {% if mensaje %}
+                        {{mensaje}}
+                      {% endif %}    
+                    </div>
+                </fieldset>
+            </form>
+            </div>
+          </div>
+        </div>
+
+      </div>
+        
+    </div>
+    </section><!-- End Contactos Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-10 col-md-6">
+            <div class="footer-info">
+              <h3>DD<span>.</span></h3>
+              <p>
+                <strong>Telefono:</strong> +56 9 7339 7492<br>
+                <strong>Email:</strong> Dd@gmail.com<br>
+              </p>
+              
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>DD Links</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#hero">Inicio</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#portfolio">Noticias</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#clima"> Clima</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#about">Acerca de</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#contact">Contactos</a></li>
+            </ul>
+          </div> 
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>DD</span></strong>. All Rights Reserved
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'vendor/purecounter/purecounter_vanilla.js' %}"></script>
+  <script src="{% static 'vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'vendor/php-email-form/validate.js' %}"></script>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'js/main.js' %}"></script>
+  
+  <script>
+    $.validator.addMethod("Nombre", function(value, element) {
+      return this.optional(element) || /(^[A-Za-z])/.test(value);
+      }, "Por favor solo letras.");
+
+      $.validator.addMethod("Correo", function(value, element) {
+      return this.optional(element) || /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(value);
+      });
+
+      $("#form").validate({
+        rules: {
+          nombre: {
+            required: true,
+            minlength: 2,
+            maxlength: 10,
+            Nombre: ""
+          },
+          correo:{
+            required: true,
+            email: true
+          },
+          mensajes:{
+            required: true
+          }
+        },
+        messages:{
+              nombre: {
+                required: "Por favor ingrese Nombre",
+                maxlength: "Por favor no ingrese más de 10 caracteres",
+                minlength: "Por favor ingrese al menos 2 caracteres"                  
+              },
+              correo: {
+                required: "Por favor ingrese Correo",
+                email: "Por favor ingrese correctamente el correo"
+              },
+              mensajes:{
+                required:"Por favor ingrese su motivo"
+              }
+        }
+      });
+  </script>
+</body>
+
+</html>

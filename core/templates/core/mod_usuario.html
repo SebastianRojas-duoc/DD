@@ -1,0 +1,448 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+
+    <head>
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+        <title>Modificar usuario</title>
+        <meta content="" name="description">
+        <meta content="" name="keywords">
+
+        <!-- Favicons -->
+        <link href="{% static 'img/favicon.png' %}" rel="icon">
+        <link href="{% static 'img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+        <!-- Vendor CSS Files -->
+        <link href="{% static 'vendor/aos/aos.css' %}" rel="stylesheet">
+        <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+        <link href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+        <link href="{% static 'vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+        <link href="{% static 'vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+        <link href="{% static 'vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+        <link href="{% static 'vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+        
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    
+    </head>
+
+    <body>
+            <!-- ======= Header ======= -->
+        <header id="header" class="fixed-top ">
+            <div class="container d-flex align-items-center justify-content-lg-between">
+
+            <h1 class="logo me-auto me-lg-0"><a href="{% url 'index' %}">DD<span>.</span></a></h1>
+            <nav id="navbar" class="navbar order-last order-lg-0">
+                <ul>
+                <li><a class="nav-link scrollto" href="{% url 'index' %}">Inicio</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                      Noticias
+                    </a>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="{% url 'index' %}#portfolio">Sección Noticias</a>
+                      <a class="dropdown-item" href="{% url 'noti' %}">Ver Mas</a>
+                    </div>
+                </li>
+                <li><a class="nav-link scrollto" href="{% url 'index' %}#clima">Clima</a></li>
+                <li><a class="nav-link scrollto" href="{% url 'index' %}#about">Acerca de</a></li>
+                <li><a class="nav-link scrollto" href="{% url 'index' %}#contact">Contactos</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle " href="#" id="navbardrop" data-toggle="dropdown">
+                    <i class="bx bx-user-circle"></i>
+                    </a>
+                    <div class="dropdown-menu">
+                    {% if user.is_authenticated %}
+                        <p>{{user.username}}</p>
+                        <a href="{% url 'usuario' %}">Ver Usuario</a>
+                        <a href="{% url 'logout' %}">Cerrar sesion</a>
+                    {% else %}
+                    <a class="dropdown-item" href="{% url 'regi' %}">Registrate</a>
+                    <a href="{% url 'login' %}">Iniciar sesion</a>
+                    {% endif %}
+                    </div>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+
+            </div>
+        </header><!-- End Header -->
+
+        <!-- ======= noticias Section ======= -->
+
+        <section id="cta" class="cta">
+            <div class="container" data-aos="zoom-in">
+
+            <div class="text-center">
+                <div class="section-title">
+                <br>
+                <br>
+                <br>
+                <h2 id="l1">Modifica el usuario<span>.</span></h2>
+                </div>
+            </div>
+
+            </div>
+        </section>
+
+        <section id="contacto" class="contacto">
+            <div class="container row" data-aos="fade-up">
+                <div class="col-lg-4">
+                    
+                </div>
+                <div class="col-lg-6">
+                    <div class="card" id="cc">
+                        <form id="form" method="post">
+                            {% csrf_token %}
+                            {{ form.as_table }}
+                            
+                            <br><br>
+                            <div>
+                                <input class="reset bter" type="reset" id="btnreset" value="Restablecer">
+                                <input class="submit bter" type="submit" id="btnvalida" value="Enviar">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section><!-- End Contactos Section -->
+
+        <!-- ======= Footer ======= -->
+        <footer id="footer">
+            <div class="footer-top">
+            <div class="container">
+                <div class="row">
+        
+                <div class="col-lg-10 col-md-6">
+                    <div class="footer-info">
+                    <h3>DD<span>.</span></h3>
+                    <p>
+                        <strong>Telefono:</strong> +56 9 7339 7492<br>
+                        <strong>Email:</strong> Dd@gmail.com<br>
+                    </p>
+                    
+                    </div>
+                </div>
+        
+                <div class="col-lg-2 col-md-6 footer-links">
+                    <h4>DD Links</h4>
+                    <ul>
+                    <li><i class="bx bx-chevron-right"></i> <a href="{% url 'index' %}">Inicio</a></li>
+                    <li><i class="bx bx-chevron-right"></i> <a href="{% url 'index' %}#portfolio">Noticias</a></li>
+                    <li><i class="bx bx-chevron-right"></i> <a href="{% url 'index' %}#clima"> Clima</a></li>
+                    <li><i class="bx bx-chevron-right"></i> <a href="{% url 'index' %}#about">Acerca de</a></li>
+                    <li><i class="bx bx-chevron-right"></i> <a href="{% url 'index' %}#contact">Contactos</a></li>
+                    </ul>
+                </div>
+        
+                </div>
+            </div>
+            </div>
+        
+            <div class="container">
+            <div class="copyright">
+                &copy; Copyright <strong><span>DD</span></strong>. All Rights Reserved
+            </div>
+            </div>
+        </footer><!-- End Footer -->
+        
+        <div id="preloader"></div>
+        <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+        <!-- Vendor JS Files -->
+        <script src="{% static 'vendor/purecounter/purecounter_vanilla.js' %}"></script>
+        <script src="{% static 'vendor/aos/aos.js' %}"></script>
+        <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'vendor/glightbox/js/glightbox.min.js' %}"></script>
+        <script src="{% static 'vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+        <script src="{% static 'vendor/swiper/swiper-bundle.min.js' %}"></script>
+        <script src="{% static 'vendor/php-email-form/validate.js' %}"></script>
+
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.js"></script>
+        
+        <!-- Template Main JS File -->
+        <script src="{% static 'js/main.js' %}"></script>
+        
+        <script>
+            
+            //////////////////////////////////////////////////////////////////////////////////////////
+            $.validator.addMethod("texto", function(value, element) {
+            return this.optional(element) || /(^[A-Za-z])/.test(value);
+            }, "Por favor solo letras.");
+      
+      
+            $.validator.addMethod("Correo", function(value, element) {
+            return this.optional(element) || /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(value);
+            });
+      
+      
+            ///////Rut///////////////////////////////////////////////////////////////////////////////////
+            var Fn = {
+                validaRut : function (rutCompleto) {
+                    rutCompleto = rutCompleto.replace("-", "-");
+                    if (!/^[0-9]{8}[-|-]{1}[0-9kK]{1}$/.test(rutCompleto))
+                        return false;
+                    var tmp   = rutCompleto.split('-');
+                    var digv  = tmp[1]; 
+                    var rut   = tmp[0];
+                    if (digv == 'K') digv = 'k' ;
+                    
+                    return (Fn.dv(rut) == digv);
+                },
+                dv : function(T) {
+                    var M=0,S=1;
+                    for(;T;T=Math.floor(T/10))
+                        S=(S+T%10*(9-M++%6))%11;
+                    return S ? S-1 : 'k';
+                }
+            }
+            
+            $(document).ready(function() {
+                  $.validator.addMethod("Rut", function(value, element) {
+                      return this.optional(element) || Fn.validaRut(value);
+                  }, "Por favor ingresa un RUT válido.");
+            });
+            
+      
+            ///////edad///////////////////////////////////////////////////////////////////////////////////
+            $(document).ready(function() {
+          
+              $.validator.addMethod("maxDateToday", function(value, element) {
+                  var parts = value.split('/');
+                  var selectedDate = new Date(parts[2], parts[1] - 1, parts[0]);
+                  var currentDate = new Date();
+                  
+                  return selectedDate <= currentDate;
+              });
+      
+              $.validator.addMethod("minAge", function(value, element, minAge) {
+                  var parts = value.split('/');
+                  var birthDate = new Date(parts[2], parts[1] - 1, parts[0]); 
+                  var currentDate = new Date();
+                  
+                  // Calcular la edad
+                  var age = currentDate.getFullYear() - birthDate.getFullYear();
+                  var monthDifference = currentDate.getMonth() - birthDate.getMonth();
+                  if (monthDifference < 0 || (monthDifference === 0 && currentDate.getDate() < birthDate.getDate())) {
+                      age--;
+                  }
+                  
+                  return age >= minAge;
+              });
+      
+              
+              $.validator.addMethod("dateFormat", function(value, element) {
+                  return /^\d{2}\/\d{2}\/\d{4}$/.test(value);
+              });
+            });
+      
+            ///////direccion///////////////////////////////////////////////////////////////////////////////////
+            var comunas = ["Santiago", "Providencia", "Ñuñoa", "Las Condes", "Puente Alto", "Maipú",
+                           "La Florida", "Recoleta", "Vitacura", "La Reina"];
+        
+            
+            function contieneComuna(direccion) {
+            var direccionMin = direccion.toLowerCase();
+            return comunas.some(comuna => direccionMin.includes(comuna.toLowerCase()));
+            }
+      
+            $.validator.addMethod("direccionConComuna", function(value, element) {
+            return contieneComuna(value);
+            }, "La dirección debe contener una comuna válida");
+      
+            ///////telefono///////////////////////////////////////////////////////////////////////////////////
+            $.validator.addMethod("formatoTelefono", function(value, element) {
+            var regex = /^9\s\d{4}\s\d{4}$/;
+            return this.optional(element) || regex.test(value); 
+            }, "Por favor ingrese el teléfono correctamente");
+      
+            ///////contraseña///////////////////////////////////////////////////////////////////////////////////
+            $(document).ready(function() {
+                $.validator.addMethod("fuerzaContraseña", function(value, element) {
+                    var longitudMinima = 8;
+                    var contieneMayuscula = /[A-Z]/.test(value);
+                    var contieneMinuscula = /[a-z]/.test(value);
+                    var contieneNumero = /[0-9]/.test(value);
+                    var contieneCaracterEspecial = /[!@#$%^&*(),.?":{}|<>]/.test(value);
+            
+                    return (
+                        value.length >= longitudMinima &&
+                        contieneMayuscula &&
+                        contieneMinuscula &&
+                        contieneNumero && 
+                        contieneCaracterEspecial
+                    );
+      
+                }, function(params, element) {
+                    var mensajes = [];
+                    var value = $(element).val();
+            
+                    if (value.length < 8) {
+                        mensajes.push("al menos 8 caracteres.");
+                    }
+                    if (!/[A-Z]/.test(value)) {
+                        mensajes.push("al menos una letra mayúscula.");
+                    }
+                    if (!/[a-z]/.test(value)) {
+                        mensajes.push("al menos una letra minúscula.");
+                    }
+                    if (!/[0-9]/.test(value)) {
+                        mensajes.push("al menos un número.");
+                    }
+                    if (!/[!@#$%^&*(),.?":{}|<>]/.test(value)) {
+                        mensajes.push("al menos un carácter especial.");
+                        }
+      
+                    return mensajes.join(" Debe tener ");
+                });
+        
+                $.validator.addMethod("matchPasswords", function(value, element) {
+                    var contraseña = $("#id_password").val();
+                    return value === contraseña;
+                }, "Las contraseñas no coinciden.");
+            });
+      
+            //////////////////////////////////////////////////////////////////////////////////////////
+              $("#form").validate({
+      
+                rules: {
+                    username: {
+                        required: true,
+                        minlength: 4,
+                        texto: ""
+                    },
+      
+                    first_name: {
+                        required: true,
+                        minlength: 2,
+                        maxlength: 10,
+                        texto: ""
+                    },
+      
+                    last_name: {
+                        required: true,
+                        minlength: 2,
+                        maxlength: 10,
+                        texto: ""
+                    },
+                    
+                    rut: {
+                        required: true,
+                        Rut:""
+                    },
+      
+                    genero:{
+                        required: true
+                    },
+      
+                    fecha_nacimiento: {
+                        required: true,
+                        dateFormat:true,
+                        maxDateToday:true,
+                        minAge:18
+                    },
+      
+                    telefono:{
+                        required: true,
+                        formatoTelefono: true
+                    },
+                    
+                    email:{
+                        required: true,
+                        email: true,
+                        Correo:""
+                    },
+                    
+                    password: {
+                      required: true,
+                      fuerzaContraseña: true
+                    },
+      
+                    confirm_password: {
+                        required: true,
+                        matchPasswords: true
+                    },
+                    
+                    direccion:{
+                        required: true,
+                        minlength: 5,
+                        direccionConComuna: true
+                    }
+                    
+                },
+                messages:{
+                    username: {
+                        required: "Por favor ingrese Nombre Usuario",
+                        minlength: "Por favor ingrese al menos 4 caracteres"
+                    },  
+      
+                    first_name: {
+                        required: "Por favor ingrese Nombre",
+                        maxlength: "Por favor no ingrese más de 10 caracteres",
+                        minlength: "Por favor ingrese al menos 2 caracteres"
+                        
+                    },
+      
+                    last_name: {
+                        required: "Por favor ingrese Apellido",
+                        maxlength: "Por favor no ingrese más de 10 caracteres",
+                        minlength: "Por favor ingrese al menos 2 caracteres"
+                    },
+      
+                    fecha_nacimiento:{
+                        required: "La fecha de nacimiento es obligatoria.",
+                        maxDateToday: "La fecha no puede ser mayor a la fecha actual",
+                        minAge: "Debes ser mayor de edad (18 años o más)",
+                        dateFormat: "Por favor, ingrese la fecha en el formato dd/MM/yyyy",
+                    },
+      
+                    rut:{
+                        required:"Por favor, ingrese rut"
+                    },
+      
+                    genero:{
+                        required:"Por favor seleccione un genero"
+                    },
+      
+                    telefono: {
+                        required: "Por favor ingrese su teléfono.",
+                        formatoTelefono: "El formato debe ser 9 xxxx xxxx."
+                    },
+      
+                    email: {
+                        required: "Por favor ingrese Correo",
+                        email: "Por favor ingrese correctamente el correo"
+                    },
+      
+                    password: {
+                      required: "Por favor ingrese su contraseña o coloque una nueva."
+                    },
+      
+                    confirm_password: {
+                        required: "Por favor confirme su contraseña.",
+                        matchPasswords: "Las contraseñas no coinciden." 
+                    },
+      
+                    direccion:{
+                        required: "Por favor ingrese su dirección.",
+                        minlength: "La dirección debe tener al menos 5 caracteres.",
+                        direccionConComuna: "La dirección debe contener al menos una comuna válida."
+                    }
+                    
+                }
+              });
+        </script>
+        
+
+    </body>
+</html>
+
